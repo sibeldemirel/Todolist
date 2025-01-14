@@ -27,8 +27,9 @@ namespace Todolist.Controllers
             return View();
         }
 
-        // GET: Todolist/Create
-        public IActionResult Create()
+        // GET: Todolist/Form
+        [Route("Todolist/Form")]
+        public IActionResult Form()
         {
             return View();
         }
