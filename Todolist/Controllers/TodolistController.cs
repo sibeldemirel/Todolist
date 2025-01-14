@@ -6,29 +6,29 @@ namespace Todolist.Controllers
 {
     public class TodolistController : Controller
     {
-        // Liste statique de contacts
-        private static List<TaskModel> contacts = new List<TaskModel>
+        // Liste statique de tâches
+        private static List<TaskModel> tasks = new List<TaskModel>
         {
-            new TaskModel { Id = 1, Name = "Planning", Description = "hfghbrththbrthntrgfnfjnthht", status = "done" },
-            new TaskModel { Id = 2, Name = "Shopping", Description = "htghtrsjntrhjrhthtrhtrhtrh", status = "todo" },
-            new TaskModel { Id = 3, Name = "Dishwashing", Description = "hhbqehrqeherghbrzGfeztgeztg", status = "todo" }
+            new TaskModel { Id = 1, Name = "Planning", Description = "hfghbrththbrthntrgfnfjnthht", Status = "done" },
+            new TaskModel { Id = 2, Name = "Shopping", Description = "htghtrsjntrhjrhthtrhtrhtrh", Status = "todo" },
+            new TaskModel { Id = 3, Name = "Dishwashing", Description = "hhbqehrqeherghbrzGfeztgeztg", Status = "todo" }
         };
 
 
         // GET: Todolist
-        public ActionResult Index()
+        public IActionResult Index()
         {
-            return View();
+            return View(tasks);
         }
 
         // GET: Todolist/Details/5
-        public ActionResult Details(int id)
+        public IActionResult Details(int id)
         {
             return View();
         }
 
         // GET: Todolist/Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -36,7 +36,7 @@ namespace Todolist.Controllers
         // POST: Todolist/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Create(IFormCollection collection)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace Todolist.Controllers
         }
 
         // GET: Todolist/Edit/5
-        public ActionResult Edit(int id)
+        public IActionResult Edit(int id)
         {
             return View();
         }
@@ -57,7 +57,7 @@ namespace Todolist.Controllers
         // POST: Todolist/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(int id, IFormCollection collection)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace Todolist.Controllers
         }
 
         // GET: Todolist/Delete/5
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
             return View();
         }
@@ -78,7 +78,7 @@ namespace Todolist.Controllers
         // POST: Todolist/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public IActionResult Delete(int id, IFormCollection collection)
         {
             try
             {
