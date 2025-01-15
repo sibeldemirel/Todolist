@@ -1,6 +1,8 @@
-﻿using System.Data.Entity;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Todolist.Data;
 using Todolist.Models;
 
 namespace Todolist.Controllers
@@ -8,25 +10,26 @@ namespace Todolist.Controllers
     public class TodolistController : Controller
     {
         // Liste statique de tâches
-        private static List<TaskModel> tasks = new List<TaskModel>
-        {
-            new TaskModel { Id = 1, Name = "Planning", Description = "hfghbrththbrthntrgfnfjnthht", Status = "done" },
-            new TaskModel { Id = 2, Name = "Shopping", Description = "htghtrsjntrhjrhthtrhtrhtrh", Status = "todo" },
-            new TaskModel { Id = 3, Name = "Dishwashing", Description = "hhbqehrqeherghbrzGfeztgeztg", Status = "todo" }
-        };
+        //private static List<TaskModel> tasks = new List<TaskModel>
+        //{
+        //    new TaskModel { Id = 1, Name = "Planning", Description = "hfghbrththbrthntrgfnfjnthht", Status = "done" },
+        //    new TaskModel { Id = 2, Name = "Shopping", Description = "htghtrsjntrhjrhthtrhtrhtrh", Status = "todo" },
+        //    new TaskModel { Id = 3, Name = "Dishwashing", Description = "hhbqehrqeherghbrzGfeztgeztg", Status = "todo" }
+        //};
 
-        private readonly DbContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
-        public TodolistController(DbContext dbContext)
+        public TodolistController(ApplicationDbContext applicationDbContext)
         {
-            _dbContext = dbContext;
+            _dbContext = applicationDbContext;
         }
 
 
         // GET: Todolist
         public IActionResult Index()
         {
-            return View(tasks);
+            var todo = _dbContext.myTask.ToList();
+            return View(todo);
         }
 
         // GET: Todolist/Details/5
