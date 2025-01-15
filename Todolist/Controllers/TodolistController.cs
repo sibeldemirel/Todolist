@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Data.Entity;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Todolist.Models;
 
@@ -13,6 +14,13 @@ namespace Todolist.Controllers
             new TaskModel { Id = 2, Name = "Shopping", Description = "htghtrsjntrhjrhthtrhtrhtrh", Status = "todo" },
             new TaskModel { Id = 3, Name = "Dishwashing", Description = "hhbqehrqeherghbrzGfeztgeztg", Status = "todo" }
         };
+
+        private readonly DbContext _dbContext;
+
+        public TodolistController(DbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
 
         // GET: Todolist
