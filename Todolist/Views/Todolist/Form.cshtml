@@ -5,7 +5,7 @@
 <form asp-action="Create" method="post">
     <div class="form-group">
         <label for="Name">Nom de la tâche</label>
-        <input type="text" id="Name" name="Name" class="form-control" placeholder="Intitulé de la tâche" value="@TaskModel.Name" required />
+        <input type="text" id="Name" name="Name" class="form-control" placeholder="Intitulé de la tâche" asp-controller="TodoListController" required />
     </div>
     <div class="form-group">
         <label for="Description">Description de la tâche</label>

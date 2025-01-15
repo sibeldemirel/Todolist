@@ -57,16 +57,8 @@ namespace Todolist.Controllers
                 return RedirectToAction(nameof(Index));
             }
             
-                return View();
+            return View();
             
-            //try
-            //{
-            //    return RedirectToAction(nameof(Index));
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
         }
 
         // GET: Todolist/Edit/5
