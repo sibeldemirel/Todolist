@@ -12,5 +12,5 @@ namespace Todolist.Models
         public required string Description { get; set; }
         [Required]
         public required string Status { get; set; }
-    }
+    } 
 }

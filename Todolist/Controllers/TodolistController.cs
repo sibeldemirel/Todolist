@@ -48,16 +48,25 @@ namespace Todolist.Controllers
         // POST: Todolist/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(IFormCollection collection)
+        public IActionResult Create(TaskModel taskModel)
         {
-            try
+            if (ModelState.IsValid)
             {
+                _dbContext.myTask.Add(taskModel);
+                _dbContext.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
+            
                 return View();
-            }
+            
+            //try
+            //{
+            //    return RedirectToAction(nameof(Index));
+            //}
+            //catch
+            //{
+            //    return View();
+            //}
         }
 
         // GET: Todolist/Edit/5
