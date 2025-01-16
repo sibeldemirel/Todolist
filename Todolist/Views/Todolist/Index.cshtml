@@ -23,8 +23,8 @@
                 <td>@task.Description</td>
                 <td>@task.Status</td>
                 <td>
-                    <a href="@Url.Action("Edit", "Todolist", new { id = task.Id })">Éditer</a>
-                    <a href="@Url.Action("Delete", "Todolist", new { id = task.Id })">Supprimer</a>
+                    <a asp-action="Edit" asp-route-id="@task.Id">Éditer</a>
+                    <a asp-action="Delete" asp-route-id="@task.Id">Supprimer</a>
                 </td>
             </tr>
         }

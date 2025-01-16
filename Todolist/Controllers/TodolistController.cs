@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Todolist.Data;
 using Todolist.Models;
 
@@ -61,46 +62,30 @@ namespace Todolist.Controllers
             
         }
 
-        // GET: Todolist/Edit/5
+        // POST: Todolist/Edit/5
         public IActionResult Edit(int id)
         {
-            return View();
-        }
-
-        // POST: Todolist/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, IFormCollection collection)
-        {
-            try
+            var todo = _dbContext.myTask.Find(id);
+            if (todo != null)
             {
-                return RedirectToAction(nameof(Index));
+                _dbContext.myTask.Update(todo);
+                _dbContext.SaveChanges();
+                return RedirectToAction(nameof(Form));
             }
-            catch
-            {
-                return View();
-            }
-        }
 
-        // GET: Todolist/Delete/5
-        public IActionResult Delete(int id)
-        {
             return View();
         }
 
         // POST: Todolist/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id, IFormCollection collection)
+        public IActionResult Delete(int id)
         {
-            try
+            var todo = _dbContext.myTask.Find(id);
+            if (todo != null)
             {
-                return RedirectToAction(nameof(Index));
+                _dbContext.Remove(todo);
+                _dbContext.SaveChanges();
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }
